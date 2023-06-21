@@ -11,7 +11,7 @@ const TaskList = ({ tasks, toggleComplete, deleteTask }) => {
           key={task.id}
           id={task.id}
           title={task.title}
-          isComplete={task.isComplete}
+          isComplete={task.is_complete}
           toggleComplete = {toggleComplete}
           deleteTask = {deleteTask}
         />
@@ -26,7 +26,7 @@ TaskList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      isComplete: PropTypes.bool.isRequired,
+      is_complete: PropTypes.bool.isRequired,
     })
   ).isRequired,
   toggleComplete: PropTypes.func.isRequired,
