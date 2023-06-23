@@ -1,13 +1,14 @@
-import { useState } from 'react';
-import PropTypes from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 
 const INITITIAL_FORM_DATA = {
-    title: '',
-    description: '',
-    completed_at: null
-}
+    'title': '',
+    'description': '',
+    'completed_at': null
+};
 
-const NewTaskForm = ({ addTask }) => {
+const NewTaskForm = (props) => {
 
     const [formData, setFormData] = useState(INITITIAL_FORM_DATA);
 
@@ -18,7 +19,7 @@ const NewTaskForm = ({ addTask }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addTask(formData);
+        props.addTask(formData);
         setFormData(INITITIAL_FORM_DATA);
     };
 
@@ -32,24 +33,24 @@ const NewTaskForm = ({ addTask }) => {
             name="title"
             value={formData.title}
             onChange={handleChange}
-          />
-          <label htmlFor="Description">Description</label>
-          <input
+        />
+        <label htmlFor="Description">Description</label>
+        <input
             required
             type="text"
             id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
-          />
-          <input type="submit" value="submit"/>
-        </form>
-      );
+        />
+        <input type="submit" value="submit"/>
+    </form>
+    );
 
 };
 
 NewTaskForm.propTypes = {
-    addTask: PropTypes.func.isRequired,
+    addTask: PropTypes.func,
 };
 
 export default NewTaskForm;
